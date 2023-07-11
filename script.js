@@ -2,62 +2,20 @@ const questions = [
     {
         question: "Bla bla bla",
         answers: [
-            { text: "Bla bla", correct: false },
-            { text: "Bla bla", correct: true },
-            { text: "Bla bla", correct: false },
-            { text: "Bla bla", correct: false }
+            { text: "Bla bla", correct: false, explanation: "Explicação da resposta correta" },
+            { text: "Bla bla", correct: true, explanation: "Explicação da resposta incorreta" },
+            { text: "Bla bla", correct: false, explanation: "Explicação da resposta correta" },
+            { text: "Bla bla", correct: false, explanation: "Explicação da resposta correta" }
         ]
     },
-    {
-        question: "Bla bla bla",
-        answers: [
-            { text: "Bla bla", correct: false },
-            { text: "Bla bla", correct: true },
-            { text: "Bla bla", correct: false },
-            { text: "Bla bla", correct: false }
-        ]
-    },
-    {
-        question: "Bla bla bla",
-        answers: [
-            { text: "Bla bla", correct: false },
-            { text: "Bla bla", correct: true },
-            { text: "Bla bla", correct: false },
-            { text: "Bla bla", correct: false }
-        ]
-    },
-    {
-        question: "Bla bla bla",
-        answers: [
-            { text: "Bla bla", correct: false },
-            { text: "Bla bla", correct: true },
-            { text: "Bla bla", correct: false },
-            { text: "Bla bla", correct: false }
-        ]
-    },
-    {
-        question: "Bla bla bla",
-        answers: [
-            { text: "Bla bla", correct: false },
-            { text: "Bla bla", correct: true },
-            { text: "Bla bla", correct: false },
-            { text: "Bla bla", correct: false }
-        ]
-    },
-    {
-        question: "Bla bla bla",
-        answers: [
-            { text: "Bla bla", correct: false },
-            { text: "Bla bla", correct: true },
-            { text: "Bla bla", correct: false },
-            { text: "Bla bla", correct: false }
-        ]
-    }
+    // Resto das perguntas...
 ];
 
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answers-buttons");
 const nextButton = document.getElementById("next-btn");
+const explanationContainer = document.getElementById("explanation-container");
+const resultContainer = document.getElementById("result-container");
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -71,6 +29,7 @@ function startQuiz() {
 }
 
 function showQuestions() {
+    resetState();
     let currentQuestion = questions[currentQuestionIndex];
     let questionNo = currentQuestionIndex + 1;
     questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
@@ -122,7 +81,6 @@ nextButton.addEventListener("click", () => {
     if (currentQuestionIndex === questions.length) {
         finishQuiz();
     } else {
-        resetState();
         showQuestions();
     }
 });
@@ -131,6 +89,20 @@ function finishQuiz() {
     questionElement.innerHTML = "Você terminou o quiz!";
     answerButtonsElement.innerHTML = `Acertos: ${score} de ${questions.length}`;
     nextButton.style.display = "none";
+
+    explanationContainer.innerHTML = "";
+    resultContainer.innerHTML = "";
+
+    questions.forEach((question, index) => {
+        const questionNumber = index + 1;
+        const selectedAnswer = question.answers.find(answer => answer.correct);
+        const explanation = selectedAnswer.explanation;
+
+        const questionResult = document.createElement("p");
+        questionResult.innerHTML = `<strong>Pergunta ${questionNumber}:</strong> ${question.question}<br><strong>Explicação:</strong> ${explanation}`;
+
+        resultContainer.appendChild(questionResult);
+    });
 }
 
 startQuiz();
