@@ -1,12 +1,61 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
   }
   
   body {
     background: #001e4d;
+  }
+
+  li, a, button{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+  }
+
+  header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+
+  }
+  .logo{
+    cursor: pointer;
+  }
+
+  .nav__links{
+    list-style: none;
+  }
+
+  .nav__links li{
+    display: inline-block;
+    padding: 0px 20px;
+  }
+
+  .nav__links a{
+    transition: all 0.4s ease 0s;
+  }
+
+  .nav__links a:hover{
+    color: #0088a9;
+  }
+
+  button{
+    padding: 9px 25px;
+    background-color: rgba(0,136,169,1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s ease 0s;
+  }
+
+  button:hover{
+    background-color: rgba(0,136,169,0.8);
   }
   
   .app {
@@ -16,6 +65,7 @@
     margin: 100px auto;
     border-radius: 10px;
     padding: 30px;
+    
   }
   
   .app h1 {
@@ -25,6 +75,7 @@
     border-bottom: 1px solid #333;
     padding-bottom: 30px;
     text-align: center;
+    
   }
   
   .quiz {
@@ -35,6 +86,7 @@
     font-size: 18px;
     color: #001e4d;
     font-weight: 600;
+  
   }
   
   .btn {
