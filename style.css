@@ -12,12 +12,11 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-   
+    padding : 10px 5px;
     justify-content: space-between;
     width: 100%;
     z-index: 2;
     transition: .5s;
-    
 }
 
 
@@ -82,6 +81,10 @@ a{
 
 
 /*INÍCIO*/
+section{
+    padding: 40px 0;
+}
+
 .background-img{
     background-image: url("img/close-up-do-homem-de-negocios-com-tabuleta-digital\ \(1\).jpg");
     position: relative;
@@ -166,47 +169,87 @@ a{
     
 }
 
- h2 {
-    
+
+#manual{
+    background-color: white;
+}
+.container-manual{
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+#manual h2{
     text-align: center;
     font-size: 34px;
-    margin-top: 30px; /* Espaçamento acima do título */
+    color: rgb(83, 186, 217);
+    border-bottom: 3px solid rgb(83, 186, 217);
+    padding-bottom: 15px;
+    margin-bottom: 40px;
 }
 
-
-
-/*MANUAL*/
-
-#manual {
-    max-width: 1250px;
-    margin: 0 auto; /* Centraliza horizontalmente */
-    columns: 3; 
-    column-gap: 40px; 
-    justify-content: center;
-}
-
-.coluna {
-    break-inside: avoid-column; /* Evita que o conteúdo seja dividido em várias colunas */
-    margin-bottom: 20px; /* Espaçamento entre as colunas */
-    width: 55%; /* Largura das colunas */
-    width: calc(33.33% - 40px);
-}
-
-.coluna h2 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-
-#revisao{
-    max-width: 1250px;
-    margin: 0 auto;
-}
 
 #conteudo{
+    background-color: rgb(83, 186, 217);
+}
+.container-conteudo{
     max-width: 1250px;
     margin: 0 auto;
+}
+
+#conteudo h2{
+    text-align: center;
+    font-size: 34px;
+    /*margin-top: 60px; /* Espaçamento acima do título */
+    /*margin-bottom: 40px; /* Espaçamento abaixo do título */
+    color: #212529;
+    border-bottom: 3px solid #212529;
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+}
+
+.conteudo .paragrafo1 h3{
+    font-size: 30px;
+
+}
+#conteudo .paragrafo1 p{
+    padding-top: 20px;
+    font-size: 18px;
+    font-weight: 450;
+    text-align: justify;
+    padding-bottom: 20px;
+    line-height: 32px;
+}
+#conteudo .paragrafo2 p{
+    padding-top: 20px;
+    font-size: 18px;
+    font-weight: 450;
+    text-align: justify;
+    padding-bottom: 20px;
+    line-height: 32px;
+}
+#conteudo .paragrafo3 p{
+    padding-top: 20px;
+    font-size: 18px;
+    font-weight: 450;
+    text-align: justify;
+    padding-bottom: 20px;
+    line-height: 32px;
+}
+#conteudo .paragrafo4 p{
+    padding-top: 20px;
+    font-size: 18px;
+    font-weight: 450;
+    text-align: justify;
+    padding-bottom: 20px;
+    line-height: 32px;
+}
+#conteudo .paragrafo5 p{
+    padding-top: 20px;
+    font-size: 18px;
+    font-weight: 450;
+    text-align: justify;
+    padding-bottom: 20px;
+    line-height: 32px;
 }
 
 #exercicios{
