@@ -12,7 +12,8 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    padding : 10px 5px;
+    /*padding-top: 40px;*/
+    padding: 35px 35px ;
     justify-content: space-between;
     width: 100%;
     z-index: 2;
@@ -122,6 +123,7 @@ section{
 .main-title, .btn{
     text-transform: uppercase;
 }
+
 .main-title{
     font-size: 56px;
     font-weight: 400;
@@ -152,12 +154,12 @@ section{
     width: 250px;
     margin: 30px 0px;
     font-weight: bold;  
-    border-color: rgb(255, 255, 255);;
+    border-color: rgb(255, 255, 255);
 }
 .btn:hover{
     background: transparent;
-    border-color: rgb(83, 186, 217);;
-    color: rgb(83, 186, 217);;
+    border-color: rgb(83, 186, 217);
+    color: rgb(83, 186, 217);
 }
 
 .inicio-content img{
@@ -169,7 +171,13 @@ section{
     
 }
 
-
+#carouselExampleCaptions{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #3d3d3d;
+}
 #manual{
     background-color: white;
 }
@@ -189,7 +197,8 @@ section{
 
 
 #conteudo{
-    background-color: rgb(83, 186, 217);
+    /*background-color: rgb(83, 186, 217);*/
+    background: linear-gradient(to bottom,rgb(142, 199, 226), rgb(83, 186, 217), rgb(50, 135, 160));
 }
 .container-conteudo{
     max-width: 1250px;
@@ -207,58 +216,40 @@ section{
     margin-bottom: 40px;
 }
 
-.conteudo .paragrafo1 h3{
-    font-size: 30px;
-
+.accordion-button{
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 30px;
+    text-align: center;
+    color: rgb(83, 186, 217);
 }
-#conteudo .paragrafo1 p{
-    padding-top: 20px;
-    font-size: 18px;
-    font-weight: 450;
-    text-align: justify;
-    padding-bottom: 20px;
-    line-height: 32px;
+.accordion-body p{
+    font-size: 16px;
+    line-height: 30px;
 }
-#conteudo .paragrafo2 p{
-    padding-top: 20px;
-    font-size: 18px;
-    font-weight: 450;
-    text-align: justify;
-    padding-bottom: 20px;
-    line-height: 32px;
+.exercicios-conteudo-p{
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
-#conteudo .paragrafo3 p{
-    padding-top: 20px;
-    font-size: 18px;
-    font-weight: 450;
-    text-align: justify;
-    padding-bottom: 20px;
-    line-height: 32px;
-}
-#conteudo .paragrafo4 p{
-    padding-top: 20px;
-    font-size: 18px;
-    font-weight: 450;
-    text-align: justify;
-    padding-bottom: 20px;
-    line-height: 32px;
-}
-#conteudo .paragrafo5 p{
-    padding-top: 20px;
-    font-size: 18px;
-    font-weight: 450;
-    text-align: justify;
-    padding-bottom: 20px;
-    line-height: 32px;
+.accordion-body button{
+    background-color: transparent;
+    color: rgb(83, 186, 217);
+    font-weight: bold;  
+    border: solid rgb(83, 186, 217);
+    width: 180px; 
+    height: 50px; 
+    font-size: 18px; 
+    margin-bottom: 20px;
+    transition: .3s;
 }
 
-#carouselExampleCaptions{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #3d3d3d;
+.accordion-body button:hover{
+    background-color: rgb(83, 186, 217);
+    color: #212529;
+    font-weight: bold;  
+
 }
+
 
 
 /*EXERCÍCIOS*/
@@ -303,3 +294,24 @@ section{
     color: rgb(83, 186, 217);
 }
 
+.upper-footer{
+    background-color: rgb(83, 186, 217);
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.upper-footer img{
+    width: 120px;
+}
+.rodape{
+    background-color: rgb(50, 135, 160);
+    height: 50px;
+    color: white;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.rodape p{
+    margin: 0 auto;
+}
