@@ -6,14 +6,14 @@
   }
   
   body {
-    background: #001e4d;
+    background: rgb(83, 186, 217);
   }
 
   li, a, button{
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 16px;
-    color: #edf0f1;
+    color: white;
     text-decoration: none;
   }
 
@@ -44,12 +44,12 @@
   }
 
   .nav__links a:hover{
-    color: #0088a9;
+    color: rgb(50, 135, 160);
   }
 
   button{
     padding: 9px 25px;
-    background-color: rgba(0,136,169,1);
+    background-color: rgb(50, 135, 160);
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -57,7 +57,7 @@
   }
 
   button:hover{
-    background-color: rgba(0,136,169,0.8);
+    background-color: rgb(58, 156, 185);
   }
 
   a{
