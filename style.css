@@ -177,6 +177,10 @@ section{
     font-size: 60px;
     /*-webkit-text-stroke: 1px black;*/
 }
+.destaque-paragraph{
+    font-weight: bold;
+    color: rgb(83, 186, 217);
+}
 
 .inicio-texts h2{
     font-size: 18px;
@@ -191,7 +195,6 @@ section{
     border-radius: 30px;
     width: 50px; /* Defina o valor que desejar para a largura */
     height: 50px; /* Defina o valor que desejar para a altura */
-    font-size: 18px; /* Ajuste o tamanho da fonte se necessário */
     padding: 0; 
     border-radius: 0px;
     width: 250px;
@@ -199,7 +202,15 @@ section{
     font-weight: bold;  
     border-color: rgb(255, 255, 255);
 }
-.btn:hover{
+.btn a{
+    font-size: 16px;
+    transition: .3s;
+    padding: 15px 44px 15px 44px;
+}
+.btn a:hover{
+    color: rgb(83, 186, 217);
+}
+.btn:hover {
     background: transparent;
     border-color: rgb(83, 186, 217);
     color: rgb(83, 186, 217);
@@ -207,10 +218,6 @@ section{
 
 .inicio-content img{
     max-width: 50%;
-    
-}
-.inicio-content a{
-    font-size: 10px;
     
 }
 
@@ -274,9 +281,9 @@ section{
     margin-top: 30px;
     margin-bottom: 20px;
 }
+
 .accordion-body button{
     background-color: transparent;
-    color: rgb(83, 186, 217);
     font-weight: bold;  
     border: solid rgb(83, 186, 217);
     width: 180px; 
@@ -285,13 +292,11 @@ section{
     margin-bottom: 20px;
     transition: .3s;
 }
-
-.accordion-body button:hover{
-    background-color: rgb(83, 186, 217);
-    color: #212529;
-    font-weight: bold;  
-
+.accordion-body button a{
+    font-size: 18px;
+    color: rgb(83, 186, 217);
 }
+
 
 
 

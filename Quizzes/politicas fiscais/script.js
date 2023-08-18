@@ -41,16 +41,19 @@ const questions = [
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answers-buttons");
 const nextButton = document.getElementById("next-btn");
-const explanationContainer = document.getElementById("explanation-container");
 const resultContainer = document.getElementById("result-container");
 
 let currentQuestionIndex = 0;
+let selectedAnswerIndex = -1;
 let score = 0;
+let questionResults = [];
 
 function startQuiz() {
     resetState();
     currentQuestionIndex = 0;
+    selectedAnswerIndex = -1;
     score = 0;
+    questionResults = [];
     nextButton.innerHTML = "Próximo";
     showQuestions();
 }
@@ -61,16 +64,13 @@ function showQuestions() {
     const questionNo = currentQuestionIndex + 1;
     questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
 
-    currentQuestion.answers.forEach(answer => {
+    currentQuestion.answers.forEach((answer, index) => {
         const button = document.createElement("button");
         button.innerHTML = answer.text;
         button.classList.add("btn");
         answerButtonsElement.appendChild(button);
 
-        if (answer.correct) {
-            button.dataset.correct = "true";
-        }
-        button.addEventListener("click", selectAnswer);
+        button.addEventListener("click", () => selectAnswer(index));
     });
 }
 
@@ -81,19 +81,13 @@ function resetState() {
     }
 }
 
-function selectAnswer(e) {
-    const selectedButton = e.target;
-    const isCorrect = selectedButton.dataset.correct === "true";
+function selectAnswer(answerIndex) {
+    selectedAnswerIndex = answerIndex;
 
-    Array.from(answerButtonsElement.children).forEach(button => {
-        button.disabled = true;
-        if (button === selectedButton) {
-            if (isCorrect) {
-                button.classList.add("correct");
-                score++;
-            } else {
-                button.classList.add("incorrect");
-            }
+    Array.from(answerButtonsElement.children).forEach((button, index) => {
+        button.classList.remove("selected");
+        if (index === selectedAnswerIndex) {
+            button.classList.add("selected");
         }
     });
 
@@ -105,7 +99,23 @@ function selectAnswer(e) {
 }
 
 nextButton.addEventListener("click", () => {
+    if (selectedAnswerIndex !== -1) {
+        const currentQuestion = questions[currentQuestionIndex];
+        const selectedAnswer = currentQuestion.answers[selectedAnswerIndex];
+        if (selectedAnswer.correct) {
+            score++;
+        }
+        questionResults.push({
+            question: currentQuestion.question,
+            selectedAnswer: selectedAnswer.text,
+            isCorrect: selectedAnswer.correct,
+            explanation: selectedAnswer.explanation,
+        });
+    }
+
+    selectedAnswerIndex = -1;
     currentQuestionIndex++;
+
     if (currentQuestionIndex === questions.length) {
         finishQuiz();
     } else {
@@ -113,35 +123,36 @@ nextButton.addEventListener("click", () => {
     }
 });
 
-function restartQuiz() {
-    explanationContainer.innerHTML = "";
-    resultContainer.innerHTML = "";
-    startQuiz();
-}
-
 function finishQuiz() {
     questionElement.innerHTML = "Você terminou o quiz!";
     answerButtonsElement.innerHTML = `Acertos: ${score} de ${questions.length}`;
     nextButton.style.display = "none";
+
+    questionResults.forEach((result, index) => {
+        const questionNumber = index + 1;
+        const resultText = result.isCorrect ? "Correta" : "Incorreta";
+
+        const questionResult = document.createElement("p");
+        questionResult.innerHTML = `
+            <strong>Pergunta ${questionNumber}:</strong> ${result.question}<br>
+            <strong>Alternativa selecionada:</strong> ${result.selectedAnswer} (${resultText})<br>
+            <strong>Explicação:</strong> ${result.explanation}<br><br>
+        `;
+
+        resultContainer.appendChild(questionResult);
+    });
 
     const restartButton = document.createElement("button");
     restartButton.innerHTML = "Reiniciar Quiz";
     restartButton.classList.add("btn", "restart-btn");
     restartButton.addEventListener("click", restartQuiz);
 
-    resultContainer.innerHTML = "";
     resultContainer.appendChild(restartButton);
+}
 
-    questions.forEach((question, index) => {
-        const questionNumber = index + 1;
-        const selectedAnswer = question.answers.find(answer => answer.correct);
-        const explanation = selectedAnswer.explanation;
-
-        const questionResult = document.createElement("p");
-        questionResult.innerHTML = `<strong>Pergunta ${questionNumber}:</strong> ${question.question}<br><strong>Alternativa correta:</strong> ${explanation}<br><br>`;
-
-        resultContainer.appendChild(questionResult);
-    });
+function restartQuiz() {
+    resultContainer.innerHTML = "";
+    startQuiz();
 }
 
 startQuiz();
